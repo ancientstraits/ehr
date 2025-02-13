@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EHR</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="page page-selected popup" id="loading-page">
+        <h1>Loading</h1>
+    </div>
+    <div class="page popup" id="login-page">
+        <form id="login">
+            <h1>Log In</h1>
+            <p id="login-error">Invalid username or password</p>
+            <input name="user" placeholder="Username" />
+            <br>
+            <input name="pass" type="password" placeholder="Password" />
+            <br>
+            <input type="submit" />
+        </form>
+    </div>
+    <div class="page" id="main-page">
+        <div id="main-page-content">
+            <div id="menu-bar">
+                <div class="menu">
+                    <div class="menu-name">PatientPatientPatientPatientPatient</div>
+                    <ul class="menu-content">
+                        <li><a>A</a></li>
+                        <li><a>B</a></li>
+                        <li><a>C</a></li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <div class="menu-name">Room</div>
+                    <ul class="menu-content">
+                        <li><a>A</a></li>
+                        <li><a>B</a></li>
+                        <li><a>C</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main-bottom-content">
+                <div id="horitab-container">
+                    <div class="horitab">
+                        Do this
+                    </div>
+                    <div class="horitab">Do this next</div>
+                </div>
+
+                <div class="popup" id="main-popup">
+                    <h1>Main Page</h1>
+                    <p id="greeting"></p>
+                    <button id="logout">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/index.js" type="module"></script>
+</body>
+</html>
