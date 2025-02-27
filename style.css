@@ -100,25 +100,37 @@ input, input[type=text], input[type=password] {
 .menu {
     border-radius: 2px;
     border-color: white;
-    padding: 10px;
     display: inline-block;
+    margin: 0;
 }
 
-.menu:hover {
+.menu-name {
+    margin: 0;
+    padding: 10px;
+}
+.menu-name:hover {
     background-color: #444;
 }
 
 .menu-content {
-    /* display: none; */
+    display: none;
+    margin: 0;
     padding: 0;
-    display: block;
     list-style-type: none;
     position: absolute;
 }
 
-/* .menu:hover .menu-content {
+.menu-content > li {
+    padding: 10px;
+    background-color: #222;
+}
+.menu-content > li:hover {
+    background-color: #555;
+}
+
+.menu:hover .menu-content {
     display: block;
-} */
+}
 
 #horitab-container {
     top: 0;
@@ -139,9 +151,14 @@ input, input[type=text], input[type=password] {
     border-style: solid;
     border-color: white;
     border-width: 2px;
+    cursor: pointer;
 }
 
 #main-popup {
     flex-grow: 1;
     margin: 30px;
+}
+
+#template-container {
+    display: none;
 }

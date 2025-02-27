@@ -1,27 +1,24 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js'
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js'
-import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js'
-import { $, firebaseConfig } from './util.js'
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js'
+import { $, fireAuth, firebaseConfig } from './util.js'
 import { setPage, hideAllPagesExcept } from './page.js'
+import { createHoritabFromTemplate, loadTemplates } from './template.js'
+import { addHoritab } from './horitab.js'
+import { registerFormEvents } from './form.js'
 
 // hideAllPagesExcept('loading')
 
-const app  = initializeApp(firebaseConfig)
-const auth = getAuth(app)
-const db   = getDatabase(app)
+registerFormEvents()
+for (const template of loadTemplates()) {
+    const horitab = createHoritabFromTemplate(template)
+    // console.log(horitab)
+    addHoritab(horitab) 
+}
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(fireAuth, async (user) => {
     if (user) {
         console.log(user)
         $('#greeting').textContent = `Hello, ${user.displayName}`
         setPage('main')
-        // set(ref(db, `/users/${user.uid}`), {
-        //     'thing': true,
-        //     'what': 300,
-        //     'myarray': [
-        //         1, 2, 3, 100, -9909
-        //     ]
-        // })
     } else {
         setPage('login')
     }
@@ -34,7 +31,7 @@ $('#login').onsubmit = async (e) => {
 
     try {
         const cred = await signInWithEmailAndPassword(
-            auth, email, password
+            fireAuth, email, password
         )
         $('#login-error').style.display = 'none'
     } catch(e) {
@@ -48,5 +45,5 @@ $('#login').onsubmit = async (e) => {
 }
 
 $('#logout').onclick = async (e) => {
-    await signOut(auth)
+    await signOut(fireAuth)
 }
