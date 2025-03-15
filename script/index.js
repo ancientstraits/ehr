@@ -1,18 +1,17 @@
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js'
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from 'firebase/auth'
 import { $, fireAuth, firebaseConfig } from './util.js'
 import { setPage, hideAllPagesExcept } from './page.js'
 import { createHoritabFromTemplate, loadTemplates } from './template.js'
-import { addHoritab } from './horitab.js'
-import { registerFormEvents } from './form.js'
-
+import { addHoritab, registerLaunchHoritabEvents } from './horitab.js'
 // hideAllPagesExcept('loading')
 
-registerFormEvents()
-for (const template of loadTemplates()) {
-    const horitab = createHoritabFromTemplate(template)
+// registerFormEvents()
+registerLaunchHoritabEvents()
+// for (const template of loadTemplates()) {
+//     const horitab = createHoritabFromTemplate(template)
     // console.log(horitab)
-    addHoritab(horitab) 
-}
+//     addHoritab(horitab) 
+// }
 
 onAuthStateChanged(fireAuth, async (user) => {
     if (user) {

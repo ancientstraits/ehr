@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EHR</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="res/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
@@ -26,10 +27,10 @@
         <div id="main-page-content">
             <div id="menu-bar">
                 <div class="menu">
-                    <div class="menu-name">PatientPatientPatientPatientPatient</div>
+                    <div class="menu-name">Patient</div>
                     <ul class="menu-content">
-                        <li><a>A</a></li>
-                        <li><a>B</a></li>
+                        <li><a id="launch-addPatient">Add Patient</a></li>
+                        <li><a id="launch-viewPatients">View Patients</a></li>
                         <li><a>C</a></li>
                     </ul>
                 </div>
@@ -61,21 +62,87 @@
     </div>
 
     <div id="template-container">
-        <div class="template">
+        <div class="template" id="template-viewPatients">
             <div class="template-horitab">
-                Is Among Us Real? Click Here To Find Out
+                View Patients
+            </div>
+            <div class="template-content">
+                <h1>View Patients</h1>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th name="name">Name</th>
+                            <th name="dob">Date of Birth</th>
+                            <th name="checkin">Check-in place</th>
+                            <th name="time">Time Admitted</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>                
+            </div>
+        </div>
+
+        <div class="template" id="template-addPatient">
+            <div class="template-horitab">
+                Add a Patient
             </div>
             <div class="template-content">
                 <h1>Add Patient</h1>
 
-                <form class="ehr-form" id="ehr-form-addPatient">
+                <form>
                     <label for="name">Patient Name</label>
                     <input type="text" name="name" />
+                    <br>
+
+                    <label for="dob">Patient Date of Birth</label>
+                    <input type="date" name="dob" />
+                    <br>
+
+                    <label for="checkin">Check-in Place</label>
+                    <select name="checkin">
+                        <option value="er">Emergency Room</option>
+                        <option value="amb">Ambulance</option>
+                        <option value="cir">Check-in Room</option>
+                    </select>
+                    <br>
+
+                    <label for="cc">Chief Complaint</label>
+                    <textarea name="cc" rows="3" cols="40"></textarea>
+                    <br>
+
                     <input type=submit value="Add Patient" />
                 </form>
             </div>
         </div>
     </div>
+
+
+    <!--
+    Import map generated with JSPM Generator
+    Edit here: https://generator.jspm.io/#U2VhYGBmD80rySzJSU1hSMssSk1KLE51MDTUM9Ez0E8sKMAUKy3JwBBMSSxJBPEBOcKQH1AA
+  -->
+  <script type="importmap">
+  {
+    "imports": {
+      "firebase/app": "https://ga.jspm.io/npm:firebase@11.4.0/app/dist/esm/index.esm.js",
+      "firebase/auth": "https://ga.jspm.io/npm:firebase@11.4.0/auth/dist/esm/index.esm.js",
+      "firebase/database": "https://ga.jspm.io/npm:firebase@11.4.0/database/dist/esm/index.esm.js"
+    },
+    "scopes": {
+      "https://ga.jspm.io/": {
+        "@firebase/app": "https://ga.jspm.io/npm:@firebase/app@0.11.2/dist/esm/index.esm2017.js",
+        "@firebase/auth": "https://ga.jspm.io/npm:@firebase/auth@1.9.1/dist/esm2017/index.js",
+        "@firebase/component": "https://ga.jspm.io/npm:@firebase/component@0.6.13/dist/esm/index.esm2017.js",
+        "@firebase/database": "https://ga.jspm.io/npm:@firebase/database@1.0.13/dist/index.esm2017.js",
+        "@firebase/logger": "https://ga.jspm.io/npm:@firebase/logger@0.4.4/dist/esm/index.esm2017.js",
+        "@firebase/util": "https://ga.jspm.io/npm:@firebase/util@1.11.0/dist/index.esm2017.js",
+        "idb": "https://ga.jspm.io/npm:idb@7.1.1/build/index.js",
+        "tslib": "https://ga.jspm.io/npm:tslib@2.8.1/tslib.es6.mjs"
+      }
+    }
+  }
+  </script>
 
     <script src="script/index.js" type="module"></script>
 </body>

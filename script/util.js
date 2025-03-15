@@ -1,6 +1,6 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js'
-import { getAuth } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js'
-import { getDatabase } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js'
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+import { getDatabase } from 'firebase/database'
 
 export const $ = document.querySelector.bind(document)
 export const $$ = document.querySelectorAll.bind(document)
