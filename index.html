@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EHR</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/assets/favicon-DcXoUxaz.ico">
+  <script type="module" crossorigin src="/assets/index-cpRzja2a.js"></script>
+</head>
+<body>
+    <div class="page page-selected popup" id="loading-page">
+        <h1>Loading</h1>
+    </div>
+    <div class="page popup" id="login-page">
+        <form id="login">
+            <h1>Log In</h1>
+            <p id="login-error">Invalid username or password</p>
+            <input name="user" placeholder="Username" />
+            <br>
+            <input name="pass" type="password" placeholder="Password" />
+            <br>
+            <input type="submit" />
+        </form>
+    </div>
+    <div class="page" id="main-page">
+        <div id="main-page-content">
+            <div id="menu-bar">
+                <div class="menu">
+                    <div class="menu-name">Patient</div>
+                    <ul class="menu-content">
+                        <li><a id="launch-addPatient">Add Patient</a></li>
+                        <li><a id="launch-viewPatients">View Patients</a></li>
+                        <li><a>C</a></li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <div class="menu-name">Room</div>
+                    <ul class="menu-content">
+                        <li><a>A</a></li>
+                        <li><a>B</a></li>
+                        <li><a>C</a></li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <div class="menu-name">Communicate</div>
+                    <ul class="menu-content">
+                        <li><a id="launch-sendNotification">Send Notification</a></li>
+                        <li><a id="launch-viewNotifications">View Notifications</a></li>
+                        <li><a>C</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main-bottom-content">
+                <div id="horitab-container">
+                    <!-- <div class="horitab">
+                        Do this
+                    </div>
+                    <div class="horitab">Do this next</div> -->
+                </div>
+
+                <div class="popup" id="main-popup">
+                    <!-- <div>
+                        <h1>Main Page</h1>
+                        <p id="greeting"></p>
+                        <button id="logout">Log Out</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="template-container">
+        <div class="template" id="template-viewNotifications">
+            <div class="template-horitab">
+                View Notifications
+            </div>
+            <div class="template-content">
+                <h1>View Notifications</h1>
+
+                <div class="notification-container">
+                    <!-- <details>
+                        <summary>New Notification A</summary>
+                        My Message A
+                        This is a message from me.
+                    </details> 
+                    <details>
+                        <summary>New Notification B</summary>
+                        My Message B
+                        This is another message from me.
+                    </details>  -->
+                </div>
+            </div>
+        </div>
+
+        <div class="template" id="template-sendNotification">
+            <div class="template-horitab">
+                Send Notification
+            </div>
+            <div class="template-content">
+                <h1>Send Notification</h1>
+
+                <form>
+                    <label for="recipients">Recipients</label>
+                    <select name="recipients">
+                        <option value="everyone">Send to Everyone</option>
+                    </select>
+                    <br>
+
+                    <label for="priority">Priority</label>
+                    <select name="priority">
+                        <option value="Information">Information</option>
+                        <option value="Urgent">Urgent</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                    <br>
+
+                    <label for="message">Message</label>
+                    <textarea name="message" rows="3" cols="40"></textarea>
+                    <br>
+
+                    <input type="submit" value="Send Notification" />
+                </form>
+            </div>
+        </div>
+        <div class="template" id="template-viewPatients">
+            <div class="template-horitab">
+                View Patients
+            </div>
+            <div class="template-content">
+                <h1>View Patients</h1>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th name="name">Name</th>
+                            <th name="dateOfBirth">Date of Birth</th>
+                            <th name="checkInLocation">Check-in Location</th>
+                            <th name="checkInTime">Time Admitted</th>
+                            <th name="chiefComplaint">Chief Complaint</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>                
+            </div>
+        </div>
+
+        <div class="template" id="template-addPatient">
+            <div class="template-horitab">
+                Add a Patient
+            </div>
+            <div class="template-content">
+                <h1>Add Patient</h1>
+
+                <form>
+                    <label for="name">Patient Name</label>
+                    <input type="text" name="name" />
+                    <br>
+
+                    <label for="dateOfBirth">Patient Date of Birth</label>
+                    <input type="date" name="dateOfBirth" />
+                    <br>
+
+                    <label for="checkInLocation">Check-in Place</label>
+                    <select name="checkInLocation">
+                        <option value="Primary care">Primary care</option>
+                        <option value="Urgent care">Urgent care</option>
+                        <option value="Emergency department">Emergency department</option>
+                    </select>
+                    <br>
+
+                    <label for="chiefComplaint">Chief Complaint</label>
+                    <textarea name="chiefComplaint" rows="3" cols="40"></textarea>
+                    <br>
+
+                    <input type=submit value="Add Patient" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
