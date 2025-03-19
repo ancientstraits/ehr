@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+    base: '/ehr',
     server: {
         port: 8080
     },
