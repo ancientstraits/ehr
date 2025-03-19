@@ -6,9 +6,12 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+permissions:
+  contents: write
 
 jobs:
   build:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
 
     steps:
