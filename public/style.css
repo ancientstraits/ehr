@@ -1,0 +1,250 @@
+@font-face {
+    font-family: "Instrument Serif";
+    src: url('res/InstrumentSerif-Regular.ttf') format('truetype');
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    color: white;
+    background-image: url('res/crh-building-hero.jpg');
+    background-size: auto 100%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background image resolution is 1600:850, this is to scale the background image well */
+@media (min-aspect-ratio: 1600/850) {
+    body {
+        background-size: 100% auto;
+    }
+}
+
+
+button,
+input[type=submit] {
+    color: white;
+    background: linear-gradient(#757575, #000000 60%, #000000 70%, #545454 90%, #3b3b3b);
+    padding: 2px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 2px;
+    border-width: 1px;
+}
+
+button:hover,
+input[type=submit]:hover {
+    background: linear-gradient(to top, #757575, #000000 60%, #000000 70%, #545454 90%, #3b3b3b);
+}
+
+input,
+input[type=text],
+input[type=password] {
+    color: white;
+    background-color: #75757577;
+    padding: 2px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 2px;
+    border-width: 1px;
+}
+
+.popup {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 100px;
+    border-radius: 12px;
+
+    background: linear-gradient(#82828277, #00000077 17%, #00000077 30%, #75757577 90%, #3b3b3b77);
+}
+
+.popup h1 {
+    font-family: 'Instrument Serif', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.page {
+    display: none;
+}
+
+.page.page-selected {
+    display: block;
+}
+
+#main-page-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+#main-bottom-content {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+#login-error {
+    display: none;
+    color: rgb(255, 39, 39);
+}
+
+#menu-bar {
+    /* top:0;
+    left: 0; */
+    /* width: 100%; */
+    /* padding: 20px; */
+
+    margin: 0;
+    padding: 0;
+
+    background-color: rgba(50, 50, 50, 1.0);
+
+    display: flex;
+    flex-direction: row;
+
+    user-select: none;
+}
+
+.menu {
+    border-radius: 2px;
+    border-color: white;
+    display: inline-block;
+    margin: 0;
+}
+
+.menu-name {
+    margin: 0;
+    padding: 10px;
+}
+
+.menu-name:hover {
+    background-color: #444;
+}
+
+.menu-content {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+}
+
+.menu-content>li {
+    padding: 10px;
+    background-color: #222;
+}
+
+.menu-content>li:hover {
+    background-color: #555;
+}
+
+.menu:hover .menu-content {
+    display: block;
+}
+
+#horitab-container {
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+
+    background-color: rgba(50, 50, 50, 0.3);
+
+    display: flex;
+    flex-direction: column;
+
+    user-select: none;
+}
+
+.horitab {
+    padding: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    cursor: pointer;
+}
+
+.horitab.active {
+    background-color: white;
+    color: black;
+}
+
+.close-horitab {
+    text-align: center;
+	border: 2px black solid;
+	border-radius: 5px;
+	width: 15px;
+    height: 15px;
+	float: right;
+    color: black;
+	background-color: #EEE;
+}
+.close-horitab:hover {
+    background-color: #888;
+}
+.close-horitab:active {
+    background-color: black;
+    color: white;
+}
+
+.content {
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
+
+#main-popup {
+    flex-grow: 1;
+    margin: 30px;
+}
+
+#template-container {
+    display: none;
+}
+
+.notification-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.notification-container details {
+    width: 30%;
+    height: 30px;
+    margin: 5px;
+}
+.notification-container details[open] {
+    height: auto;
+}
+
+details {
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 0.5em 0.5em 0;
+}
+
+summary {
+    font-weight: bold;
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em;
+}
+
+details[open] {
+    padding: 0.5em;
+}
+
+details[open] summary {
+    border-bottom: 1px solid white;
+    margin-bottom: 0.5em;
+}
