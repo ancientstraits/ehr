@@ -44,5 +44,6 @@ $('#login').onsubmit = async (e) => {
 }
 
 $('#logout').onclick = async (e) => {
+    console.log('HOEFIJEOIJWFEOIEWJO EWFIJFEWOIFEJ OIFWEJ OEWFIJ FEWOIFEW JOWEF')
     await signOut(fireAuth)
 }

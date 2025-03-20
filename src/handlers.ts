@@ -2,7 +2,8 @@ import { push, child, ref, set, get, update } from 'firebase/database'
 import { fireDb, getOthersUids, getUid, getDisplayNameFromUid } from './auth.js'
 import { patientSendableFromFormData } from './types.js'
 import { makeHoritabInactive, removeHoritab } from './horitab.js'
-import { Notification, notificationCreate, NotificationPriority, notificationSend } from './notification.js'
+import { Notification, notificationCreate, NotificationPriority, notificationSend, OrderMedicationNotification } from './notification.js'
+import { AdministerMethod, Medication, medicationGet, medicationUpdate } from './medication.js'
 
 const patientsRef = child(ref(fireDb), 'patients')
 
@@ -66,7 +67,7 @@ export const handlers: { [name: string]: (horitab: HTMLDivElement, content: HTML
 
             removeHoritab(horitab, content)
 
-            notificationSend(notificationCreate(priority, message), await getOthersUids())
+            notificationSend(notificationCreate({ priority, message }), await getOthersUids())
         }
     },
 
@@ -93,5 +94,48 @@ export const handlers: { [name: string]: (horitab: HTMLDivElement, content: HTML
             return det
         }) 
         container.append(...details)
+    },
+
+    addMedication(horitab, content) {
+        const form = content.querySelector('form')!
+
+        form.onsubmit = async (e) => {
+            e.preventDefault()
+
+            const med: Medication = {
+                name: form.medName.value,
+                administerMethod: parseInt(form.type.value),
+                dosageAmount: Number(form.amount.value),
+            }
+
+            removeHoritab(horitab, content)
+            
+            await medicationUpdate(med)
+        }
+    },
+
+    viewMedicationInventory(horitab, content) {
+
+    },
+
+    orderMedication(horitab, content) {
+        const form = content.querySelector('form')!
+
+        form.onsubmit = async (e) => {
+            e.preventDefault()
+
+            // const med = await medicationGet(form.medName.value)
+            const medName = form.medName.value
+            const patient = form.patientName.value
+            const recipient = form.recipientName.value
+            const amount = form.amount.value
+
+            const notification = notificationCreate({
+                message: `Send ${amount} milligrams of ${medName} to patient ${patient}`,
+                priority: NotificationPriority.Order,
+            })
+
+            await notificationSend(notification, [recipient])
+        }
     }
 }

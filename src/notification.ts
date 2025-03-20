@@ -1,25 +1,47 @@
 import { child, push, ref, serverTimestamp, set } from "firebase/database";
 import { fireDb, getUid } from "./auth.js";
+import { Medication } from "./medication.js";
 
-export interface Notification {
-    sender: string,
-    priority: NotificationPriority,
-    message: string,
-    date: number | object, // object for `serverTimestamp()`
-    read: boolean,
-}
 export enum NotificationPriority {
     Info = 'Information',
     Urgent = 'Urgent',
     Critical = 'Critical',
+    Order = 'Order',
+}
+export interface Notification {
+    priority: NotificationPriority,
+    sender: string,
+    message: string,
+    date: number | object, // object for `serverTimestamp()`
+    read: boolean,
 }
 
-export const notificationCreate = (priority: NotificationPriority, message: string) => (<Notification>{
+export enum OrderType {
+    Medication = 'Medication',
+    PhysicalExam = 'Physical Exam',
+}
+export interface OrderNotification extends Notification {
+    priority: NotificationPriority.Info,
+    orderType: OrderType,
+}
+export interface OrderMedicationNotification extends OrderNotification {
+    orderType: OrderType.Medication,
+    medName: string,
+    recipientID: string,
+    patientID: string,
+    amount: number,
+}
+
+interface NotificationCreateType {
+    priority: string,
+    message: string,
+    [ name: string ]: any,
+}
+export const notificationCreate = (obj: NotificationCreateType) => (<Notification>{
     sender: getUid(),
-    priority,
-    message,
     date: serverTimestamp(),
-    read: false
+    read: false,
+    ...obj
 })
 
 export async function notificationSend(notification: Notification, recipientUids: String[]) {

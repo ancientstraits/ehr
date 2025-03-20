@@ -19,7 +19,7 @@
             <br>
             <input name="pass" type="password" placeholder="Password" />
             <br>
-            <input type="submit" />
+            <input type="submit" value="Log In" />
         </form>
     </div>
     <div class="page" id="main-page">
@@ -34,11 +34,10 @@
                     </ul>
                 </div>
                 <div class="menu">
-                    <div class="menu-name">Room</div>
+                    <div class="menu-name">Medications</div>
                     <ul class="menu-content">
-                        <li><a>A</a></li>
-                        <li><a>B</a></li>
-                        <li><a>C</a></li>
+                        <li><a id="launch-addMedication">Add Medication</a></li>
+                        <li><a id="launch-viewMedicationInventory">View Inventory</a></li>
                     </ul>
                 </div>
                 <div class="menu">
@@ -49,6 +48,15 @@
                         <li><a>C</a></li>
                     </ul>
                 </div>
+                <div class="menu">
+                    <div class="menu-name">Orders</div>
+                    <ul class="menu-content">
+                        <li><a id="launch-orderMedication">Order Medication</a></li>
+                        <li><a>C</a></li>
+                    </ul>
+                </div>
+
+                <div id="logout">Log Out</div>
             </div>
 
             <div id="main-bottom-content">
@@ -71,6 +79,86 @@
     </div>
 
     <div id="template-container">
+        <div class="template" id="template-orderMedication">
+            <div class="template-horitab">
+                Order Medication
+            </div>
+            <div class="template-content">
+                <h1>Order Medication</h1>
+
+                <form>
+                    <label for="medName">Medication Name</label>
+                    <select name="medName"></select>
+                    <br>
+
+                    <label for="recipientName">Recipient Name</label>
+                    <select name="recipientName"></select>
+                    <br>
+
+                    <label for="patientName">Patient Name</label>
+                    <select name="patientName"></select>
+                    <br>
+
+                    <label for="amount">Amount of medication (milligrams)</label>
+                    <input name="amount" type="text" />
+                    <br>
+
+                    <input type="submit" value="Order Medication" />
+                </form>
+            </div>
+        </div>
+
+        <div class="template" id="template-addMedication">
+            <div class="template-horitab">
+                Add Medication
+            </div>
+            <div class="template-content">
+                <h1>Add or Update Medication</h1>
+
+                <form>
+                    <label for="medName">Medication Name</label>
+                    <input name="medName" type="text" />
+                    <br>
+
+                    <label for="type">Medication Type</label>
+                    <select name="type"></select>
+                    <br>
+
+                    <label for="amount">Medication amount (milligrams)</label>
+                    <input name="amount" />
+                    <br>
+
+                    <input type="submit" value="Add Medication" />
+                </form>
+            </div>
+        </div>
+
+        <div class="template" id="template-addMedication">
+            <div class="template-horitab">
+                Add Medication
+            </div>
+            <div class="template-content">
+                <h1>Add or Update Medication</h1>
+
+                <form>
+                    <label for="medName">Medication Name</label>
+                    <input name="medName" type="text" />
+                    <br>
+
+                    <label for="type">Medication Type</label>
+                    <select name="type" class="medication-type"></select>
+                    <br>
+
+                    <label for="amount">Medication amount (milligrams)</label>
+                    <input name="amount" />
+                    <br>
+
+                    <input type="submit" value="Add Medication" />
+                </form>
+            </div>
+        </div>
+
+
         <div class="template" id="template-viewNotifications">
             <div class="template-horitab">
                 View Notifications

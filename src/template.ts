@@ -1,3 +1,4 @@
+import { beginningHandlers } from './beginningHandlers.js'
 import { handlers } from './handlers.js'
 import { makeHoritabActive, removeHoritab } from './horitab.js'
 import { $ } from './util.js'
@@ -12,10 +13,14 @@ export function loadTemplates() {
     const templates: { [name: string]: Template } = {}
     for (const elem of elems) {
         const name = elem.id.replace(/^template-/, '')
-        templates[name] = {
-            horitab: <HTMLDivElement>elem.querySelector('.template-horitab'),
-            content: <HTMLDivElement>elem.querySelector('.template-content')
-        }
+
+        const horitab = <HTMLDivElement>elem.querySelector('.template-horitab')
+        const content = <HTMLDivElement>elem.querySelector('.template-content')
+
+        if (beginningHandlers[name] !== undefined)
+            beginningHandlers[name](horitab, content)
+
+        templates[name] = { horitab, content }
     }
     return templates
 }

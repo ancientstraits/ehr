@@ -104,7 +104,7 @@ input[type=password] {
     /* width: 100%; */
     /* padding: 20px; */
 
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
 
     background-color: rgba(50, 50, 50, 1.0);
@@ -122,12 +122,15 @@ input[type=password] {
     margin: 0;
 }
 
-.menu-name {
-    margin: 0;
+#logout {
+    margin-left: auto;
+}
+
+.menu-name, #logout {
     padding: 10px;
 }
 
-.menu-name:hover {
+.menu-name:hover, #logout:hover {
     background-color: #444;
 }
 
@@ -247,4 +250,8 @@ details[open] {
 details[open] summary {
     border-bottom: 1px solid white;
     margin-bottom: 0.5em;
+}
+
+.medication-type-template {
+    display: none;
 }

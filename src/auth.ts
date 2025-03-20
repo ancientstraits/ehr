@@ -39,9 +39,9 @@ $div('#login').onsubmit = async (e) => {
         }
     }
 }
-// $btn('#logout').onclick = async () => {
-//     await signOut(fireAuth)
-// }
+$btn('#logout').onclick = async () => {
+    await signOut(fireAuth)
+}
 
 let uid: string | null = null
 onAuthStateChanged(fireAuth, async (user) => {
